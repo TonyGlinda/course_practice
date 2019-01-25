@@ -28,15 +28,23 @@ a.increment_login_attempts()
 a.reset_login_attempts()
 
 
-class Admin(User):
-    def __init__(self, first_name, last_name, login_attempts):
-        super().__init__(first_name, last_name, login_attempts)     # 注意super()后的括号
-        self.privileges = ['can add post', 'can delete post', 'can ban user']
+class Privileges:
+    def __init__(self, privileges=['can add post', 'can delete post', 'can ban user']):
+        self.privileges = privileges
 
     def show_privileges(self):
         for i in self.privileges:
             print('管理者有：', i, '权限')
 
 
+class Admin(User):
+    def __init__(self, first_name, last_name, login_attempts):
+        super().__init__(first_name, last_name, login_attempts)     # 注意super()后的括号
+        self.privileges = Privileges()      # 将实例用作属性
+
+
 a_man = Admin('谢', '晨', 0)
-a_man.show_privileges()
+a_man.privileges.show_privileges()
+
+
+
