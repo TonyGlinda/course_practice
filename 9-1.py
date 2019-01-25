@@ -29,3 +29,19 @@ a.set_number_served(200)
 a.set_number_served(300)
 
 
+class IceCreamStand(Restaurant):        # 定义子类
+    def __init__(self, restaurant_name, cuisine_type):  # 初始化父类属性
+        super().__init__(restaurant_name, cuisine_type)
+        self.flavors = ['苹果味', '香蕉味', '草莓味']    # 添加子类的属性
+
+    def show_flavors(self):
+        for i in self.flavors:
+            print('冰淇淋的口味有：', i)
+
+
+b = IceCreamStand('每一天冰淇淋', '冰淇淋')
+b.show_flavors()
+
+
+
+
